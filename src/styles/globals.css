@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 221, 242, 253;
+    --background-end-rgb: 221, 242, 253;
+}
+
+.text-area-scrollbar {
+    scrollbar-width: thin;
+}
+
+.text-area-scrollbar::-webkit-scrollbar {
+    width: 12px;
+}
+
+.text-area-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(var(--foreground-rgb), 0.5);
+    border-radius: 6px;
+    border: 3px solid rgba(var(--background-start-rgb), 0);
+}
