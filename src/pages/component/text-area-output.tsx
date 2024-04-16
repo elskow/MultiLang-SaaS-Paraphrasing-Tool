@@ -1,11 +1,9 @@
 import LoadOutput from "@/pages/component/load-output"
-
-import { AppContext } from "@/AppContextProvider"
-import { useContext } from "react"
+import { useParaphrasingStore } from "@/store/paraphrasingStore"
 import { FaCopy, FaDownload } from "react-icons/fa"
 
 export function TextAreaOutput() {
-    const { output, isLoading } = useContext(AppContext)
+    const { output, isLoading } = useParaphrasingStore()
 
     const copyToClipboard = () => {
         navigator.clipboard

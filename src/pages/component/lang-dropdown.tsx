@@ -1,10 +1,11 @@
-import { AppContext } from "@/AppContextProvider"
-import { LANGUAGE } from "@/Const"
-import { useContext, useEffect, useState } from "react"
+import { useParaphrasingStore } from "@/store/paraphrasingStore"
+import { LanguageType } from "@/type/LanguageType"
+import { useEffect, useState } from "react"
 
 const LanguageDropdown = () => {
+    const { language: selectedLanguage, setLanguage } = useParaphrasingStore()
+
     const [isOpen, setIsOpen] = useState(false)
-    const { language: selectedLanguage, setLanguage } = useContext(AppContext)
     const [isClient, setIsClient] = useState(false)
 
     useEffect(() => {
@@ -14,8 +15,8 @@ const LanguageDropdown = () => {
     useEffect(() => {
         if (isClient) {
             setLanguage(
-                localStorage.getItem("selectedLanguage") ||
-                    (LANGUAGE.length > 0 ? LANGUAGE[0] : ""),
+                (localStorage.getItem("selectedLanguage") as LanguageType) ||
+                    LanguageType.English,
             )
         }
     }, [isClient, setLanguage])
@@ -25,7 +26,7 @@ const LanguageDropdown = () => {
     }
 
     const handleOptionClick = (lang: string) => {
-        setLanguage(lang)
+        setLanguage(lang as LanguageType)
         setIsOpen(false)
         if (typeof window !== "undefined") {
             localStorage.setItem("selectedLanguage", lang)
@@ -69,7 +70,7 @@ const LanguageDropdown = () => {
                     aria-orientation="vertical"
                     aria-labelledby="options-menu"
                 >
-                    {LANGUAGE.map((lang) => (
+                    {Object.values(LanguageType).map((lang) => (
                         <a
                             key={lang}
                             onClick={() => handleOptionClick(lang)}

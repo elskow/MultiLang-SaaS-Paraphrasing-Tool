@@ -1,5 +1,4 @@
 import Head from "next/head"
-import { useContext } from "react"
 import { SlPencil } from "react-icons/sl"
 
 import LanguageDropdown from "@/pages/component/lang-dropdown"
@@ -8,9 +7,9 @@ import { TextAreaInput } from "@/pages/component/text-area-input"
 import { TextAreaOutput } from "@/pages/component/text-area-output"
 import UsageTypeButton from "@/pages/component/usage-type-btn"
 
-import { AppContext } from "@/AppContextProvider"
 import Footer from "@/pages/component/footer"
 import { postParaphraseText } from "@/services/paraphrase"
+import { useParaphrasingStore } from "@/store/paraphrasingStore"
 import { CgSpinner } from "react-icons/cg"
 
 const Metadata = () => (
@@ -22,7 +21,7 @@ const Metadata = () => (
 
 export default function Home() {
     const { usageType, setOutput, isLoading, setIsLoading, input, language } =
-        useContext(AppContext)
+        useParaphrasingStore()
 
     const handleSubmit = async () => {
         setIsLoading(true)

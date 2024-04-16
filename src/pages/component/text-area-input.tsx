@@ -1,10 +1,10 @@
-import { AppContext } from "@/AppContextProvider"
+import { useParaphrasingStore } from "@/store/paraphrasingStore"
 import handleFileUpload from "@/utils/fileUpload"
 import { charCounts } from "@/utils/textCount"
-import React, { useContext } from "react"
+import React from "react"
 
 export function TextAreaInput({ inputLimit = 5000 }) {
-    const { input, setInput, setOutput } = useContext(AppContext)
+    const { input, setInput, setOutput } = useParaphrasingStore()
 
     React.useEffect(() => {
         const cachedInputText = localStorage.getItem("cachedInputText")

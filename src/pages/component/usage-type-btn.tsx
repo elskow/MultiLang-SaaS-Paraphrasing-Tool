@@ -1,7 +1,7 @@
-import { AppContext } from "@/AppContextProvider"
-import { USAGETYPE } from "@/Const"
+import { useParaphrasingStore } from "@/store/paraphrasingStore"
+import { UsageType } from "@/type/UsageType"
 import { useSession } from "next-auth/react"
-import { useContext, useEffect } from "react"
+import { useEffect } from "react"
 
 const activeUsageButton =
     "bg-red-600 hover:bg-red-800 transition duration-500 ease-in-out"
@@ -11,10 +11,10 @@ const inactiveUsageButton =
 const UsageTypeButton = () => {
     const { data: session } = useSession()
     const { usageType, setUsageType, setInput, setOutput } =
-        useContext(AppContext)
+        useParaphrasingStore()
 
     const handleButtonClick = (buttonName: string) => {
-        setUsageType(buttonName)
+        setUsageType(buttonName as UsageType)
         setInput("")
         setOutput("")
         localStorage.setItem("cachedUsageType", buttonName)
@@ -23,13 +23,13 @@ const UsageTypeButton = () => {
     useEffect(() => {
         const cachedUsageType = localStorage.getItem("cachedUsageType")
         if (cachedUsageType && session) {
-            setUsageType(cachedUsageType)
+            setUsageType(cachedUsageType as UsageType)
         }
     }, [setUsageType, session])
 
     return (
         <>
-            {USAGETYPE.map((buttonName) => {
+            {Object.values(UsageType).map((buttonName) => {
                 const buttonDisabled = buttonName === "Premium" && !session
 
                 return (
