@@ -1,6 +1,6 @@
 export enum LanguageType {
     English = "English",
-    Indonesian = "Indonesian",
+    Indonesia = "Indonesia",
     German = "German",
     Malay = "Malay",
     SouthKorea = "South Korea",

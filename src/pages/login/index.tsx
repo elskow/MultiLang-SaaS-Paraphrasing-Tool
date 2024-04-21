@@ -2,14 +2,15 @@ import { signIn, useSession } from "next-auth/react"
 import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { BiLeftArrowAlt } from "react-icons/bi"
 import { FcGoogle } from "react-icons/fc"
 
 const LoginPage = () => {
     const { data: session } = useSession()
+    const router = useRouter()
     if (session) {
-        const redirect = "/"
-        return (window.location.href = redirect)
+        router.push("/")
     }
 
     return (

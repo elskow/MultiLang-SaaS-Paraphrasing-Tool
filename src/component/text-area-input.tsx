@@ -26,7 +26,7 @@ export function TextAreaInput({ inputLimit = 5000 }) {
     }
 
     return (
-        <div className="flex flex-col p-5 space-y-4 bg-white rounded-lg shadow-md">
+        <div className="flex flex-col p-5 space-y-4 bg-white rounded-lg">
             <label
                 htmlFor="input"
                 className="text-gray-700 font-semibold select-none"

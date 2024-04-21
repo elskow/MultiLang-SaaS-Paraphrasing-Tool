@@ -1,4 +1,5 @@
 import "@/styles/globals.css"
+import { NextUIProvider } from "@nextui-org/react"
 import { SessionProvider } from "next-auth/react"
 import type { AppProps } from "next/app"
 import { Inter } from "next/font/google"
@@ -10,10 +11,12 @@ export default function App({
     pageProps: { session, ...pageProps },
 }: AppProps) {
     return (
-        <SessionProvider session={session}>
-            <div className={` ${inter.className} `}>
-                <Component {...pageProps} />
-            </div>
-        </SessionProvider>
+        <NextUIProvider>
+            <SessionProvider session={session}>
+                <div className={` ${inter.className} `}>
+                    <Component {...pageProps} />
+                </div>
+            </SessionProvider>
+        </NextUIProvider>
     )
 }

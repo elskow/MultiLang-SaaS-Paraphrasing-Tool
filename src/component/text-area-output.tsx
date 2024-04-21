@@ -1,4 +1,4 @@
-import LoadOutput from "@/pages/component/load-output"
+import LoadOutput from "@/component/load-output"
 import { useParaphrasingStore } from "@/store/paraphrasingStore"
 import { FaCopy, FaDownload } from "react-icons/fa"
 
@@ -21,7 +21,7 @@ export function TextAreaOutput() {
     }
 
     return (
-        <div className="flex flex-col p-5 space-y-4 bg-white rounded-lg shadow-md">
+        <div className="flex flex-col p-5 space-y-4 bg-white rounded-lg">
             <label
                 htmlFor="output"
                 className="text-gray-700 font-semibold select-none"
